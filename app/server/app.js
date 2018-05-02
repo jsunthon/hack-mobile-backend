@@ -19,7 +19,7 @@ const router = require('./router');
 app.use('/', router);
 
 
-const HTTP_PORT = config.get('app.server.port');
+const HTTP_PORT = 8081;
 
 const server = app.listen(HTTP_PORT, () => {
     logger.info(`Started server on port ${HTTP_PORT}`);

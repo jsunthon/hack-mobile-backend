@@ -2,8 +2,8 @@ const config = require('config');
 const rp = require('request-promise');
 const logger = require('winston');
 
-const API_KEY = config.get('app.service.ticketmaster.apiKey');
-const BASE_URL = config.get('app.service.ticketmaster.url');
+const API_KEY = 'JDEgJlXoAaxGAuqmctaPsNAHL7s5nSC3';
+const BASE_URL = 'https://app.ticketmaster.com/discovery/v2';
 
 function getEvents({ size = 10, zipCode, type, genre }) {
     const uri = `${BASE_URL}/events.json?size=${size}&classificationName=${type},${genre}&postalCode=${zipCode}&apikey=${API_KEY}`;

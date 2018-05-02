@@ -1,13 +1,13 @@
 const Sequelize = require('sequelize');
 const config = require('config');
 
-console.log(config.get('app.mysql.database'));
-console.log(config.get('app.mysql.username'));
-console.log(config.get('app.mysql.password'));
-console.log(config.get('app.mysql.host'));
+// console.log(config.get('app.mysql.database'));
+// console.log(config.get('app.mysql.username'));
+// console.log(config.get('app.mysql.password'));
+// console.log(config.get('app.mysql.host'));
 
-const dbConn = new Sequelize(config.get('app.mysql.database'), config.get('app.mysql.username'), config.get('app.mysql.password') + '', {
-    host: config.get('app.mysql.host'),
+const dbConn = new Sequelize('hackathon_jci', 'dream_csula', 'dreamfellows', {
+    host: 'localhost',
     dialect: 'mysql',
     operatorsAliases: false,
 
