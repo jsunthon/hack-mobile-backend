@@ -24,26 +24,29 @@ const User = db.define('user', {
     },
     food: {
         type: Sequelize.STRING
+    },
+    gym: {
+        type: Sequelize.BOOLEAN
     }
 });
 
 User.sync({force: true});
 
-function createUser({ name, zipCode, sports, music, food = 'italian' }) {
+function createUser({ name, zipCode, sports, music, food = 'italian', gym }) {
     return User.findAll({ where: { name }, raw: true}).then(users => {
         if (users.length > 0) {
             throw new BadRequestError();
         }
-        return User.create({ name, zipCode, sports, music, food }).then(savedUser => savedUser);
+        return User.create({ name, zipCode, sports, music, food, gym }).then(savedUser => savedUser);
     });
 }
 
-function updateUser({ name, zipCode, sports, music , food = 'italian' }) {
+function updateUser({ name, zipCode, sports, music , food = 'italian', gym }) {
     return User.findAll({ where: { name }, raw: true}).then(users => {
         if (users.length > 0) {
-            return User.update({ name, zipCode, sports, music, food }, { where: { name }});
+            return User.update({ name, zipCode, sports, music, food, gym }, { where: { name }});
         } else {
-            return User.create({ name, zipCode, sports, music, food });
+            return User.create({ name, zipCode, sports, music, food, gym });
         }
     });
 }

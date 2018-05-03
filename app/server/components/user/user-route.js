@@ -10,7 +10,9 @@ function createUser(req, res, next) {
     return userWorker.createUser({ name: req.body.name,
                                         zipCode: req.body.zipCode,
                                         music: req.body.music,
-                                        sports: req.body.sports })
+                                        sports: req.body.sports,
+                                        food: req.body.food,
+                                        gym: req.body.gym })
         .then((user) => res.status(200).send(user))
         .catch(error => {
             if (error instanceof BadRequestError) {
@@ -23,7 +25,9 @@ function updateUser(req, res, next) {
     return userWorker.updateUser({ name: req.body.name,
                                      zipCode: req.body.zipCode,
                                      music: req.body.music,
-                                     sports: req.body.sports })
+                                     sports: req.body.sports,
+                                     food: req.body.food,
+                                     gym: req.body.gym })
         .then((user) => res.status(200).send(user))
         .catch(error => {
             if (error instanceof BadRequestError) {
