@@ -18,7 +18,11 @@ function getEvents({ size = 10, zipCode, type, genre }) {
         json: true // Automatically parses the JSON string in the response
     };
 
-    return rp(options).then(results => results._embedded.events);
+    return rp(options).then(results => {
+        if (results._embedded && results._embedded.events) {
+            return results._embedded.events;
+        }
+    });
 }
 
 module.exports = {

@@ -68,10 +68,9 @@ function getEventsForUser({ name, type }) {
 
 function getEventCall({ user, type} ) {
     if (type !== 'food') {
-        return tickerMasterWorker.getEvents({ zipCode: user.zipCode, type, genre: user[type] });
+        return tickerMasterWorker.getEvents({ zipCode: user.zipCode, type, genre: user[type].toLowerCase() });
     } else {
-        const categories = `${type},${user[type]}`;
-        return yelpWorker.getBusinessesByCategory({ location: user.zipCode, categories });
+        return yelpWorker.getBusinessesByCategory({ location: user.zipCode, categories: user[type].toLowerCase() });
     }
 }
 
